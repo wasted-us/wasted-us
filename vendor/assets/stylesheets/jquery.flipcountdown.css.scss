@@ -13,7 +13,7 @@
 .xdsoft_flipcountdown.xdsoft_size_lg >.xdsoft_digit{
 	width:53px; 
 	height:76px;
-	background-image:url(/assets/digit-lg.png);
+	background-image:url("#{image-path('/assets/digit-lg.png')}");
 }
 .xdsoft_flipcountdown.xdsoft_size_lg >.xdsoft_digit.xdsoft_space,
 .xdsoft_flipcountdown.xdsoft_size_lg >.xdsoft_digit.xdsoft_separator,

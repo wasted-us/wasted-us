@@ -1,8 +1,9 @@
 %h1 wasted
 %p#tagline find out how much money you're wasting
-%form{:id => "main-form"}
-  %input{:type => "text", :name => "num-people", :id => "num-people"}
+%form{:id => "main-form", :class => "pure-form"}
+  %input{:type => "text", :name => "num-people", :id => "num-people", :placeholder => "How many people are in the meeting?"}
   %select{:name => "salary", :id => "salary"}
+    %option{:value => "", :disabled => "true", :selected => "true"} Average Salary
     %option{:value => "40000"} 40k
     %option{:value => "50000"} 50k
     %option{:value => "60000"} 60k

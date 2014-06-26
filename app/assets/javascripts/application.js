@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require jquery.flipcountdown
 //= require_tree .
+//= require bootstrap

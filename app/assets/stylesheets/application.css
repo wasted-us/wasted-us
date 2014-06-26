@@ -11,4 +11,5 @@
  *= require_self
  *= require jquery.flipcountdown
  *= require_tree .
+ *= require boostrap
  */

@@ -1,5 +1,10 @@
 language: ruby
 rvm:
-  - 2.0.0
+- 2.0.0
 deploy:
   provider: heroku
+  api_key:
+    secure: siOaXzwUqojQoKdJsgGyHxkTErTt4o9v6Y36sTbu1eRvo51SAxbCUf5OjbVi0beePKKEuy7xJgJj2gNw0XVtqOL/7NC82ZAKs9YFoJnX/AYArV0vW6nqFh3T4ANb+04PedOkPctIFdZI1RX01H/MSNsohGDOnLIKYnzxsm2jV64=
+  app: wasted-us
+  on:
+    repo: wasted-us/wasted-us

@@ -24,18 +24,42 @@ $(function() {
         return counter_display;
       }
     });
+
+    document.addEventListener("mousemove", magicMouse);
   });
 
-    $("#salary")
-        .bind("slider:ready slider:changed", function (event, data) {
-            $(this)
-                .nextAll(".output:first")
-                .html('Average Salary: $'+data.value.toFixed(0).replace(/./g, function(c, i, a) {
-                return i && c !== "." && !((a.length - i) % 3) ? ',' + c : c;
-            }));
-        });
+  $("#salary")
+    .bind("slider:ready slider:changed", function (event, data) {
+      $(this)
+        .nextAll(".output:first")
+        .html('Average Salary: $'+data.value.toFixed(0).replace(/./g, function(c, i, a) {
+        return i && c !== "." && !((a.length - i) % 3) ? ',' + c : c;
+      }));
+    });
 
   $('#end-meeting').on('click', function() {
     paused = true;
   });
 });
+
+// hide elements when inactive
+var timeout;
+var isHidden = false;
+
+function magicMouse() {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  timeout = setTimeout(function() {
+    // hide stuff
+    if (!isHidden) {
+      $('#end-meeting').stop().fadeOut(500);
+      isHidden = true;
+    }
+  }, 2000);
+  // unhide stuff
+  if (isHidden) {
+    $('#end-meeting').stop().fadeIn(500);
+    isHidden = false;
+  }
+};

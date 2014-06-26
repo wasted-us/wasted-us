@@ -55,11 +55,12 @@ input {
   position: absolute;
   width: 100%;
   top: 50%;
-  margin-top: -75px;
+  margin-top: -45px;
 }
 
 #counter-wrapper {
   margin-bottom: 40px;
+  transform: scale(1.5);
 }
 
 #flipcountdown {

@@ -13,16 +13,3 @@
  *= require_tree .
  *= require bootstrap.min
  */
-body {
-	font-family: 'Oxygen', sans-serif;
-	background-image:url(http://wallpapersus.com/wp-content/uploads/2012/10/Bokeh-Lights-Background.jpg);
-}
-h2 {
-	font-size: 64px;
-	color: #0070CD;
-	text-align: center;
-	padding: 1%;
-}
-#flipcountdown {
-	text-align: center;
-}

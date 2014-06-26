@@ -1,8 +1,11 @@
 $(function() {
+  var paused = false;
+
   $('#main-form').on('submit', function(event) {
     event.preventDefault();
 
-    $(this).hide();
+    $('#welcome-page').hide();
+    $('#counter-page').show();
 
     var counter = 0;
     var counter_display;
@@ -13,11 +16,17 @@ $(function() {
     $('#flipcountdown').flipcountdown({
       size:"lg",
       tick: function() {
-        counter += (num_people * salary_per_second);
-        counter_display = parseFloat(counter).toFixed(2);
+        if (!paused) {
+          counter += (num_people * salary_per_second);
+          counter_display = parseFloat(counter).toFixed(2);
+        }
 
         return counter_display;
       }
     });
+  });
+
+  $('#end-meeting').on('click', function() {
+    paused = true;
   });
 });

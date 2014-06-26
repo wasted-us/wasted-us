@@ -13,6 +13,3 @@
  *= require_tree .
  *= require bootstrap.min
  */
-.output{
-    font-size:28px;
-}

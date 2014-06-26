@@ -1,28 +1,45 @@
 h1 {
   text-align: center;
+  color: #fff;
 }
 
 #tagline {
   text-align: center;
+  color: #fff;
+}
 
+#main-form-wrapper {
+  position: absolute;
+  top: 50%;
+  margin-top: -90px;
+  width: 100%;
 }
 
 #main-form {
   max-width: 280px;
-  margin: 40px auto 0;
+  margin: 0 auto;
 }
 
 input {
   display: block;
   width: 100%;
   padding: 10px;
+  font-size: 15px;
+  height: 44px;
 }
 
-select {
+.slider {
+  margin-top: 20px;
+}
+
+.output {
   display: block;
-  width: 100%;
-  -webkit-appearance: menulist-button;
-  height: 44px;
+  font-size: 16px;
+  text-align: center;
+}
+
+#main-form-submit {
+  margin-top: 20px;
 }
 
 #main-form {}
@@ -31,7 +48,7 @@ select {
   display: none;
 }
 
-#counter-wrapper {
+#middle-wrapper {
   text-align: center;
   position: absolute;
   width: 100%;
@@ -39,8 +56,13 @@ select {
   margin-top: -75px;
 }
 
+#counter-wrapper {
+  margin-bottom: 40px;
+}
+
 #flipcountdown {
-  margin: 0 auto 40px;
+  margin: 0 auto;
+  display: inline;
 }
 
 #end-meeting {

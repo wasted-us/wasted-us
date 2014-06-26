@@ -1,5 +1,9 @@
 $(function() {
+  var i = 0;
   $('#flipcountdown').flipcountdown({
-    size:"lg"
+    size:"lg",
+    tick: function() {
+      return i++;
+    }
   });
 });

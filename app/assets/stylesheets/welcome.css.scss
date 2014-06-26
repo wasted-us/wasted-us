@@ -1,11 +1,13 @@
 h1 {
   text-align: center;
   color: #fff;
+  font-size: 48px;
 }
 
 #tagline {
   text-align: center;
   color: #fff;
+  font-size: 16px;
 }
 
 #main-form-wrapper {
@@ -63,6 +65,16 @@ input {
 #flipcountdown {
   margin: 0 auto;
   display: inline;
+}
+
+#dollar-sign {
+  font-size: 52px;
+  vertical-align: 17px;
+  color: #fff;
+  background-image: linear-gradient(#3e3e3e, #111111);
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 #end-meeting {

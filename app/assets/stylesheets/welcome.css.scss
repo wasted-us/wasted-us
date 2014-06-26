@@ -27,4 +27,24 @@ select {
 
 #main-form {}
 
+#counter-page {
+  display: none;
+}
+
+#counter-wrapper {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -75px;
+}
+
+#flipcountdown {
+  margin: 0 auto 40px;
+}
+
+#end-meeting {
+  padding: 13px 80px;
+}
+
 .xdsoft_flipcountdown.xdsoft_size_lg > .xdsoft_digit.xdsoft_dot { background-position: -41px -4620px !important; }

@@ -4,8 +4,9 @@
   #main-form-wrapper
     %form{:id => "main-form", :class => "pure-form"}
       %input{:type => "text", :name => "num-people", :id => "num-people", :placeholder => "How many people are in the meeting?"}
-      %input{:type => "text", :name => "salary", :id => "salary", :value => "10000", :data => {:slider => "true", :slider_range => "10000,200000"}}
+      %input{:type => "text", :name => "salary", :id => "salary", :value => "10000",
+             :data => {:slider => "true", :slider_range => "10000,200000", :slider_step => "5000"}}
       %span.output
-        Avg Salary: $10,000
+        Average Salary: $10,000
       %input{:type => "submit", :value => "Start Meeting", :class => "btn btn-success", :id => "main-form-submit"}
 = render "counter_page"

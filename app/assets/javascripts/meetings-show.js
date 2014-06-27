@@ -54,6 +54,9 @@ $(function() {
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
   });
+
+  if ( $('#participants').height() > 250 )
+    $('#participants').css('font-size', '13px');
 });
 
 // hide elements when inactive
@@ -63,7 +66,6 @@ var isHidden = false;
 magicMouse();
 
 function magicMouse() {
-  console.log('1');
   if (!paused && !finished) {
     if (timeout) {
       clearTimeout(timeout);

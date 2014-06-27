@@ -1,6 +1,8 @@
 WastedUs::Application.routes.draw do
   resources :meetings
 
+  post 'meetings/:id/twilio/', to: 'meetings#twilio'
+
   root 'meetings#new'
 
   get '/email', :to => "email#email", :as => :post

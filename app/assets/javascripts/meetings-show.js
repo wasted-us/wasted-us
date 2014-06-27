@@ -82,6 +82,7 @@ $(function() {
       $('.hide-on-finish').hide();
       $('.show-on-finish').show();
       $('#email-meeting').show();
+      $('#text-meeting').show();
     }
   });
 
@@ -89,10 +90,16 @@ $(function() {
     $('#email-modal').modal();
   });
 
+  $('#text-meeting').on('click', function() {
+    $('#text-modal').modal();
+  });
+
   $('#email-form').on('submit', function(event) {
 //    event.preventDefault();
 //    $.post($(this).attr('action') + '?email=' + $('#email').val() + '&meeting_notes=' + $('#meeting_notes').val(), '');
   });
+
+  $('#text-form').on('submit', function(event){});
 });
 
 // hide elements when inactive

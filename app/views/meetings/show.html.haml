@@ -13,6 +13,7 @@
     %div
       %button{:class => "btn btn-default", :id => "share-meeting"} Share Meeting
       %button{:class => "btn btn-default", :id => "email-meeting"} Email meeting info
+      %button{:class => "btn btn-default", :id => "text-meeting"} Text Meeting
     %p#url{:onclick => "selectText(this);"}
       = request.original_url
   #middle-wrapper
@@ -50,4 +51,17 @@
             %input{:type => "text", :name => "email", :placeholder => "Email Address"}
             %textarea{:name => "meeting_notes", :placeholder => "Meeting notes"}
             %input{:type => "submit", :value => "Send Email", :class => "btn btn-success"}
+        .modal-footer
+  #text-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button{:type => "button", :class => "close", :data => {:dismiss => "modal"}}
+            %span{:aria => {:hidden => "true"}} &times;
+            %span{:class => "sr-only"} Close
+          %h4.modal-title Text Meeting
+        .modal-body
+          %form{:action => "/meetings/#{@meeting.id}/twilio/", :id => "text-form", :method => "post"}
+            %input{:type => "text", :name => "phone_number_to_text", :placeholder => "Phone Number To Text"}
+            %input{:type => "submit", :value => "Send Text", :class => "btn btn-success"}
         .modal-footer

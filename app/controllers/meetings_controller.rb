@@ -61,6 +61,23 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def twilio
+    meeting = Meeting.find(params[:id])
+    account_sid = Rails.application.secrets.twilio_account_sid
+    auth_token = Rails.application.secrets.twilio_auth_token
+    twilio_phone_number = Rails.application.secrets.twilio_phone_number
+
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    client.account.messages.create({
+                                       :from => twilio_phone_number,
+                                       :to => params[:phone_number_to_text],
+                                       :body => 'Time is wasting. Enter the meeting here: ' +
+                                           meetings_url + '/' + meeting.id.to_s
+                                   })
+    redirect_to '/meetings/' + meeting.id.to_s
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meeting
@@ -69,6 +86,7 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:start_time, :end_time, :name, :participant_count, :salary, :cost, :location, :agenda, :actions, :checked_out_participant_count)
+      params.require(:meeting).permit(:start_time, :end_time, :name, :participant_count, :salary, :cost, :location, :agenda, :actions, :checked_out_participant_count, :phone_number_to_text)
     end
+
 end

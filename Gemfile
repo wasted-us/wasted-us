@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'bootstrap-glyphicons'
 
+gem 'twilio-ruby'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

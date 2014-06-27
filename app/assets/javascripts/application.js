@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.flipcountdown
-//= require_tree .
+// require_tree .
 //= require bootstrap.min
+//= require simple-slider

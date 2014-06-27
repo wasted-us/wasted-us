@@ -1,18 +1,9 @@
-#new-meeting
+= content_for :javascript do
+  = javascript_include_tag "meetings-new"
+#welcome-page
   %h1 wasted
   %p#tagline find out how much money you're wasting
   #main-form-wrapper
-  = form_for @meeting do |f|
-    - if @meeting.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@meeting.errors.count, "error")} prohibited this meeting from being saved:"
-        %ul
-          - @meeting.errors.full_messages.each do |msg|
-            %li= msg
-
-      = f.text :participant_count, placeholder: "How many people are in the meeting?"
-      = f.submit 'Save'
-
     %form{:for => @meeting, :id => "main-form", :class => "pure-form"}
       %input{:type => "text", :name => "participant_count", :id => "participant_count", :placeholder => "How many people are in the meeting?"}
       %input{:type => "text", :name => "salary", :id => "salary", :value => "90000",
@@ -22,4 +13,3 @@
       %span.output
         Average Salary: $90,000
       %input{:type => "submit", :value => "Start Meeting", :class => "btn btn-success", :id => "main-form-submit"}
-

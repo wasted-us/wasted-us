@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140627090101) do
     t.datetime "updated_at"
     t.decimal  "salary"
     t.string   "name"
-    t.integer  "checked_out_participant_count"
+    t.integer  "checked_out_participant_count", default: 0, null: false
   end
 
 end

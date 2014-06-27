@@ -45,3 +45,10 @@ input {
 #main-form-submit {
   margin-top: 20px;
 }
+
+@media (max-width: 767px) {
+  #main-form-wrapper {
+    position: static;
+    margin-top: 50px;
+  }
+}

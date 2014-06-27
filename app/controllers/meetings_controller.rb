@@ -26,7 +26,8 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
     @meeting = Meeting.new(meeting_params)
-    @meeting.participant_count = 0
+    @meeting.checked_out_participant_count = 0
+    @meeting.participant_count ||= 0
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }

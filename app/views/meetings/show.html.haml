@@ -2,7 +2,10 @@
   = javascript_include_tag "meetings-show"
 = content_for :css do
   = stylesheet_link_tag "meetings-show"
-#counter-page{:data => {:participant_count => @meeting.participant_count, :salary => @meeting.salary}}
+#counter-page{:data => {:id => @meeting.id,
+                        :participant_count => @meeting.participant_count,
+                        :salary => @meeting.salary,
+                        :cost => @meeting.cost}}
   #middle-wrapper
     #counter-wrapper
       %span#dollar-sign $

@@ -1,11 +1,12 @@
 $(function() {
   var paused = false;
 
-  var counter = 0;
+  var counter = $('#counter-page').data('cost') || 0;
   var counter_display;
   var num_people = $('#counter-page').data('participant-count') || 0;
   var average_salary = $('#counter-page').data('salary') || 90000;
   var salary_per_second = average_salary / ( 2000 * 60 * 60 );
+  var meeting_id = $('#counter-page').data('id');
 
   $('#flipcountdown').flipcountdown({
     size:"lg",
@@ -13,6 +14,12 @@ $(function() {
       if (!paused) {
         counter += (num_people * salary_per_second);
         counter_display = parseFloat(counter).toFixed(2);
+
+        $.ajax({
+                url: '/meetings/' + meeting_id,
+                type: 'PUT',
+                data: 'meeting[cost]=' + counter_display
+        });
       }
 
       return counter_display;

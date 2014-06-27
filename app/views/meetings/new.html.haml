@@ -1,15 +1,15 @@
 = content_for :javascript do
   = javascript_include_tag "meetings-new"
+= content_for :css do
+  = stylesheet_link_tag "meetings-new"
 #welcome-page
   %h1 wasted
   %p#tagline find out how much money you're wasting
   #main-form-wrapper
-    %form{:for => @meeting, :id => "main-form", :class => "pure-form"}
-      %input{:type => "text", :name => "participant_count", :id => "participant_count", :placeholder => "How many people are in the meeting?"}
-      %input{:type => "text", :name => "salary", :id => "salary", :value => "90000",
-             :data => {:slider => "true",
-                       :slider_range => "10000,200000",
-                       :slider_step => "5000"}}
+    -#%form{:for => @meeting, :id => "main-form", :class => "pure-form"}
+    = form_for @meeting, url: {action: 'create'}, :class => "pure-form" do |f|
+      = f.text_field :participant_count, :placeholder => "How many people are in the meeting?"
+      = f.text_field :salary, :value => "90000", :data => {:slider => "true", :slider_range => "10000,200000", :slider_step => "5000"}
       %span.output
         Average Salary: $90,000
       %input{:type => "submit", :value => "Start Meeting", :class => "btn btn-success", :id => "main-form-submit"}

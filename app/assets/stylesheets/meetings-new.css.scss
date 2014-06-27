@@ -1,0 +1,47 @@
+@import "simple-slider";
+
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 48px;
+}
+
+#tagline {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+#main-form-wrapper {
+  position: absolute;
+  top: 50%;
+  margin-top: -90px;
+  width: 100%;
+}
+
+#new_meeting {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  height: 44px;
+}
+
+.slider {
+  margin-top: 20px;
+}
+
+.output {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+}
+
+#main-form-submit {
+  margin-top: 20px;
+}

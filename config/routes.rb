@@ -1,5 +1,5 @@
 WastedUs::Application.routes.draw do
-  resources :meetings
+  resources :meetings, except: [:destroy, :index]
 
   post 'meetings/:id/twilio/', to: 'meetings#twilio'
 

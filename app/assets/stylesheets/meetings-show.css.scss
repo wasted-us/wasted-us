@@ -60,4 +60,20 @@
   width: 45%;
 }
 
+#checkout, #new-meeting-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  color: #000;
+}
+
+.checked-in {
+  color: #000;
+}
+
+.checked-out {
+  color: #fff;
+}
+
 .xdsoft_flipcountdown.xdsoft_size_lg > .xdsoft_digit.xdsoft_dot { background-position: -41px -4620px !important; }

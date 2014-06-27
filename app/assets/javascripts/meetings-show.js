@@ -4,10 +4,13 @@ var finished = $('#counter-page').data('finished') || false;
 $(function() {
 
   $('#url').hide();
+  $('#new-meeting').hide();
+
 
   var counter = $('#counter-page').data('cost') || 0;
   var counter_display;
   var num_people = $('#counter-page').data('participant-count') || 0;
+  var num_checkedout_people = $('#counter-page').data('checked-out-participant-count') || 0;
   var average_salary = $('#counter-page').data('salary') || 90000;
   var salary_per_second = average_salary / ( 2000 * 60 * 60 );
   var meeting_id = $('#counter-page').data('id');
@@ -16,7 +19,7 @@ $(function() {
     size:"lg",
     tick: function() {
       if (!paused && !finished) {
-        counter += (num_people * salary_per_second);
+        counter += ( ( num_people - num_checkedout_people ) * salary_per_second);
         counter_display = parseFloat(counter).toFixed(2);
 
         $.ajax({
@@ -37,8 +40,10 @@ $(function() {
   if (!finished) {
     document.addEventListener("mousemove", magicMouse);
   } else {
+    $('.hide-on-finish').hide();
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
+    $('.show-on-finish').show();
   }
 
   $('#end-meeting').on('click', function() {
@@ -57,6 +62,21 @@ $(function() {
 
   if ( $('#participants').height() > 250 )
     $('#participants').css('font-size', '13px');
+
+  $('#checkout-meeting').on('click', function() {
+    num_checkedout_people++;
+    $('span.checked-in:last').removeClass('checked-in').addClass('checked-out');
+    $.ajax({
+      url: '/meetings/' + meeting_id,
+      type: 'PUT',
+      data: 'meeting[checked_out_participant_count]=' + num_checkedout_people
+    });
+    if (num_people == num_checkedout_people) {
+      $('#end-meeting').click();
+      $('.hide-on-finish').hide();
+      $('.show-on-finish').show();
+    }
+  });
 });
 
 // hide elements when inactive
@@ -82,6 +102,9 @@ function magicMouse() {
       $('.hideable').stop().fadeIn(500);
       isHidden = false;
     }
+  }
+  if (finished) {
+    $('.hide-on-finish').stop().fadeOut(500);
   }
 };
 

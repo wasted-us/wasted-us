@@ -4,6 +4,7 @@
   = stylesheet_link_tag "meetings-show"
 #counter-page{:data => {:id => @meeting.id,
                         :participant_count => @meeting.participant_count,
+                        :checked_out_participant_count => @meeting.checked_out_participant_count,
                         :salary => @meeting.salary,
                         :cost => @meeting.cost,
                         :finished => @meeting.end_time}}
@@ -19,5 +20,14 @@
     %button{:class => "btn btn-success hideable", :id => "end-meeting"} End Meeting
     %p#ended-meeting-message This meeting has ended.
   #participants
-    - @meeting.participant_count.times do
-      %span.glyphicon.glyphicon-user
+    - (@meeting.participant_count-@meeting.checked_out_participant_count).times do
+      %span.checked-in.glyphicon.glyphicon-user
+    - @meeting.checked_out_participant_count.times do
+      %span.checked-out.glyphicon.glyphicon-user
+  #checkout
+    %button{:class => "btn btn-success hideable hide-on-finish", :id => "checkout-meeting"} Check Out of This Meeting
+  #new-meeting-wrapper
+    %a{:class => "btn btn-danger show-on-finish",
+       :id => "new-meeting",
+       :href => root_path,
+       data: { no_turbolink: true }} Start a New Meeting

@@ -36,6 +36,7 @@ var timeout;
 var isHidden = false;
 
 function magicMouse() {
+  $(function ()
   if (timeout) {
     clearTimeout(timeout);
   }
@@ -51,4 +52,5 @@ function magicMouse() {
     $('#end-meeting').stop().fadeIn(500);
     isHidden = false;
   }
+};
 };

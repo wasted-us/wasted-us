@@ -76,4 +76,24 @@
   color: #fff;
 }
 
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  height: 44px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  height: 132px;
+}
+
+#email-meeting {
+  display: none;
+}
+
 .xdsoft_flipcountdown.xdsoft_size_lg > .xdsoft_digit.xdsoft_dot { background-position: -41px -4620px !important; }

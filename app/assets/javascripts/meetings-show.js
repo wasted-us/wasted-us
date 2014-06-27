@@ -44,6 +44,7 @@ $(function() {
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
     $('.show-on-finish').show();
+    $('#email-meeting').show();
   }
 
   $('#end-meeting').on('click', function() {
@@ -58,6 +59,7 @@ $(function() {
 
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
+    $('#email-meeting').show();
   });
 
   if ( $('#participants').height() > 250 )
@@ -75,7 +77,17 @@ $(function() {
       $('#end-meeting').click();
       $('.hide-on-finish').hide();
       $('.show-on-finish').show();
+      $('#email-meeting').show();
     }
+  });
+
+  $('#email-meeting').on('click', function() {
+    $('#email-modal').modal();
+  });
+
+  $('#email-form').on('submit', function(event) {
+//    event.preventDefault();
+//    $.post($(this).attr('action') + '?email=' + $('#email').val() + '&meeting_notes=' + $('#meeting_notes').val(), '');
   });
 });
 

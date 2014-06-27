@@ -1,5 +1,6 @@
 = content_for :javascript do
   = javascript_include_tag "meetings-show"
+  = javascript_include_tag "meetings-done"
 = content_for :css do
   = stylesheet_link_tag "meetings-show"
 #counter-page{:data => {:id => @meeting.id,
@@ -18,6 +19,8 @@
       %span#dollar-sign $
       #flipcountdown
     %button{:class => "btn btn-success hideable", :id => "end-meeting"} End Meeting
+    #catwrap
+      #cat
     %p#ended-meeting-message This meeting has ended.
   #participants
     - (@meeting.participant_count-@meeting.checked_out_participant_count).times do

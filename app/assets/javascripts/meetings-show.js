@@ -58,7 +58,8 @@ $(function() {
 
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
-  });
+    $('.hide-on-finish').hide();
+    $('.show-on-finish').show();  });
 
   if ( $('#participants').height() > 250 )
     $('#participants').css('font-size', '13px');

@@ -1,3 +1,5 @@
+= content_for :javascript do
+  = javascript_include_tag "meetings-show"
 #counter-page{:data => {:participant_count => @meeting.participant_count, :salary => @meeting.salary}}
   #middle-wrapper
     #counter-wrapper

@@ -27,6 +27,8 @@ $(function() {
                 type: 'PUT',
                 data: 'meeting[cost]=' + counter_display
         });
+
+        $('#email-cost').val(counter_display);
       }
 
       if (finished) {
@@ -60,6 +62,8 @@ $(function() {
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
     $('#email-meeting').show();
+    $('.hide-on-finish').hide();
+    $('.show-on-finish').show();
   });
 
   if ( $('#participants').height() > 250 )

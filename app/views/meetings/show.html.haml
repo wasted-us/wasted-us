@@ -31,7 +31,7 @@
     %a{:class => "btn btn-danger show-on-finish",
        :id => "new-meeting",
        :href => root_path,
-       data: { no_turbolink: true }} Start a New Meeting
+       :data => { no_turbolink: true }} Start a New Meeting
   #email-modal.modal.fade
     .modal-dialog
       .modal-content
@@ -42,6 +42,8 @@
           %h4.modal-title Email meeting info
         .modal-body
           %form{:action => "/email", :id => "email-form"}
+            %input{:type => "hidden", :name => "id", :value => @meeting.id}
+            %input{:type => "hidden", :name => "cost", :value => @meeting.cost, :id => "email-cost"}
             %input{:type => "text", :name => "email", :placeholder => "Email Address"}
             %textarea{:name => "meeting_notes", :placeholder => "Meeting notes"}
             %input{:type => "submit", :value => "Send Email", :class => "btn btn-success"}

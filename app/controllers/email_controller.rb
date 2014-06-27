@@ -1,6 +1,5 @@
 class EmailController < ApplicationController
   def email
-    Rails.logger.debug('***********TEST')
     # Your domain
     domain = "wasted.us"
 
@@ -14,21 +13,19 @@ class EmailController < ApplicationController
     subject = "Thanks for using Wasted!"
 
     # Text Body
-    text = "You wasted a lot of time.\n\nLove,\nYour friends at Wasted" + params[:meeting_notes]
+    text = "You wasted a lot of time.\n\n" + "Your meeting cost $#{params[:cost]}.\n\n" +  params[:meeting_notes] + "\n\nLove,\nYour friends at Wasted"
 
     # HTML Body
     html = "<table style=\"border: solid 1px #000; background-color: #666; font-family: verdana, tahoma, sans-serif; color: #fff;\"> <tr> <td> <h2>Hello,</h2> <p>This is a test message from SendGrid.    We have sent this to you because you requested a test message be sent from your account.</p> <a href=\"http://www.google.com\" target=\"_blank\">This is a link to google.com</a> <p> <a href=\"http://www.apple.com\" target=\"_blank\">This is a link to apple.com</a> <p> <a href=\"http://www.sendgrid.com\" target=\"_blank\">This is a link to sendgrid.com</a> </p> <p>Thank you for reading this test message.</p> Love,<br/> Your friends at SendGrid</p> <p> <img src=\"http://cdn1.sendgrid.com/images/sendgrid-logo.png\" alt=\"SendGrid!\" /> </td> </tr> </table>"
 
     begin
 
-      Rails.logger.debug('***********TEST2')
       require "rubygems"
       require "mail"
       require "json"
-      Rails.logger.debug('***********TEST3')
 
       sg_username = "ksweet"
-      sg_password = ""
+      sg_password = Rails.application.secrets.sg_password
 
       Mail.defaults do
         delivery_method :smtp, { :address   => "smtp.sendgrid.net",
@@ -46,14 +43,15 @@ class EmailController < ApplicationController
         text_part do
           body text
         end
-        html_part do
-          content_type "text/html; charset=UTF-8"
-          body html
-        end
+        # html_part do
+        #   content_type "text/html; charset=UTF-8"
+        #   body html
+        # end
       end
 
-      Rails.logger.debug('***********TEST4')
       puts "Email sent successfully."
+
+      redirect_to '/meetings/' + params[:id]
     rescue Exception => e
       puts e.message
     end

@@ -1,27 +1,6 @@
-%p#notice= notice
-
-%p
-  %b Start time:
-  = @meeting.start_time
-%p
-  %b End time:
-  = @meeting.end_time
-%p
-  %b Participant count:
-  = @meeting.participant_count
-%p
-  %b Cost:
-  = @meeting.cost
-%p
-  %b Location:
-  = @meeting.location
-%p
-  %b Agenda:
-  = @meeting.agenda
-%p
-  %b Actions:
-  = @meeting.actions
-
-= link_to 'Edit', edit_meeting_path(@meeting)
-\|
-= link_to 'Back', meetings_path
+#counter-page{:data => {:participant_count => @meeting.participant_count, :salary => @meeting.salary}}
+  #middle-wrapper
+    #counter-wrapper
+      %span#dollar-sign $
+      #flipcountdown
+    %button{:class => "btn btn-danger", :id => "end-meeting"} End Meeting

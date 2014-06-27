@@ -3,6 +3,8 @@ var finished = $('#counter-page').data('finished') || false;
 
 $(function() {
 
+  $('#url').hide();
+
   var counter = $('#counter-page').data('cost') || 0;
   var counter_display;
   var num_people = $('#counter-page').data('participant-count') || 0;
@@ -52,10 +54,6 @@ $(function() {
     $('#end-meeting').hide();
     $('#ended-meeting-message').show();
   });
-
-  $('#url').on('click', function() {
-
-  });
 });
 
 // hide elements when inactive
@@ -82,3 +80,20 @@ function magicMouse() {
     }
   }
 };
+
+function selectText(elem) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elem);
+    range.select();
+  } else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(elem);
+    window.getSelection().addRange(range);
+  }
+}
+
+$('#share-meeting').on('click', function() {
+  $('#url').show();
+  $('#url').click();
+});

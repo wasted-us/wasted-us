@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require sitewide
  *= require jquery.flipcountdown
  * require_tree .
  *= require bootstrap.min
+ *= require sitewide
  */

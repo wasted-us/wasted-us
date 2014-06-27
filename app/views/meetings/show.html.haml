@@ -7,7 +7,7 @@
                         :salary => @meeting.salary,
                         :cost => @meeting.cost,
                         :finished => @meeting.end_time}}
-  #url-wrapper
+  #url-wrapper.hideable
     %div
       %button{:class => "btn btn-default", :id => "share-meeting"} Share Meeting
     %p#url{:onclick => "selectText(this);"}
@@ -16,5 +16,5 @@
     #counter-wrapper
       %span#dollar-sign $
       #flipcountdown
-    %button{:class => "btn btn-success", :id => "end-meeting"} End Meeting
+    %button{:class => "btn btn-success hideable", :id => "end-meeting"} End Meeting
     %p#ended-meeting-message This meeting has ended.

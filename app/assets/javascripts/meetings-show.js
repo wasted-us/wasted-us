@@ -60,6 +60,8 @@ $(function() {
 var timeout;
 var isHidden = false;
 
+magicMouse();
+
 function magicMouse() {
   console.log('1');
   if (!paused && !finished) {
@@ -69,13 +71,13 @@ function magicMouse() {
     timeout = setTimeout(function() {
       // hide stuff
       if (!isHidden) {
-        $('#end-meeting').stop().fadeOut(500);
+        $('.hideable').stop().fadeOut(500);
         isHidden = true;
       }
     }, 2000);
     // unhide stuff
     if (isHidden) {
-      $('#end-meeting').stop().fadeIn(500);
+      $('.hideable').stop().fadeIn(500);
       isHidden = false;
     }
   }

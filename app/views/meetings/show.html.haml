@@ -5,9 +5,13 @@
 #counter-page{:data => {:id => @meeting.id,
                         :participant_count => @meeting.participant_count,
                         :salary => @meeting.salary,
-                        :cost => @meeting.cost}}
+                        :cost => @meeting.cost,
+                        :finished => @meeting.end_time}}
+  #url
+    = request.original_url
   #middle-wrapper
     #counter-wrapper
       %span#dollar-sign $
       #flipcountdown
     %button{:class => "btn btn-danger", :id => "end-meeting"} End Meeting
+    %p#ended-meeting-message This meeting has ended.

@@ -1,5 +1,5 @@
 $(function() {
-    $("#salary")
+    $("#meeting_salary")
         .bind("slider:ready slider:changed", function (event, data) {
             $(this)
                 .nextAll(".output:first")

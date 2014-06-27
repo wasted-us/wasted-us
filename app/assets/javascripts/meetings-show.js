@@ -1,5 +1,7 @@
+var paused = false;
+var finished = $('#counter-page').data('finished') || false;
+
 $(function() {
-  var paused = false;
 
   var counter = $('#counter-page').data('cost') || 0;
   var counter_display;
@@ -11,7 +13,7 @@ $(function() {
   $('#flipcountdown').flipcountdown({
     size:"lg",
     tick: function() {
-      if (!paused) {
+      if (!paused && !finished) {
         counter += (num_people * salary_per_second);
         counter_display = parseFloat(counter).toFixed(2);
 
@@ -22,14 +24,37 @@ $(function() {
         });
       }
 
+      if (finished) {
+        counter_display = parseFloat(counter).toFixed(2);
+      }
+
       return counter_display;
     }
   });
 
-  document.addEventListener("mousemove", magicMouse);
+  if (!finished) {
+    document.addEventListener("mousemove", magicMouse);
+  } else {
+    $('#end-meeting').hide();
+    $('#ended-meeting-message').show();
+  }
 
   $('#end-meeting').on('click', function() {
+    $.ajax({
+      url: '/meetings/' + meeting_id,
+      type: 'PUT',
+      data: 'meeting[end_time]=' + new Date()
+    });
     paused = true;
+    document.removeEventListener("mousemove", magicMouse);
+    clearTimeout(timeout);
+
+    $('#end-meeting').hide();
+    $('#ended-meeting-message').show();
+  });
+
+  $('#url').on('click', function() {
+
   });
 });
 
@@ -38,19 +63,22 @@ var timeout;
 var isHidden = false;
 
 function magicMouse() {
-  if (timeout) {
-    clearTimeout(timeout);
-  }
-  timeout = setTimeout(function() {
-    // hide stuff
-    if (!isHidden) {
-      $('#end-meeting').stop().fadeOut(500);
-      isHidden = true;
+  console.log('1');
+  if (!paused && !finished) {
+    if (timeout) {
+      clearTimeout(timeout);
     }
-  }, 2000);
-  // unhide stuff
-  if (isHidden) {
-    $('#end-meeting').stop().fadeIn(500);
-    isHidden = false;
+    timeout = setTimeout(function() {
+      // hide stuff
+      if (!isHidden) {
+        $('#end-meeting').stop().fadeOut(500);
+        isHidden = true;
+      }
+    }, 2000);
+    // unhide stuff
+    if (isHidden) {
+      $('#end-meeting').stop().fadeIn(500);
+      isHidden = false;
+    }
   }
 };
